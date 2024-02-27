@@ -14,6 +14,9 @@ import { IByodSearchProps } from './components/IByodSearchProps';
 
 export interface IByodSearchWebPartProps {
   description: string;
+
+  siteUrl: string;
+  listName: string;
 }
 
 export default class ByodSearchWebPart extends BaseClientSideWebPart<IByodSearchWebPartProps> {
@@ -29,7 +32,11 @@ export default class ByodSearchWebPart extends BaseClientSideWebPart<IByodSearch
         isDarkTheme: this._isDarkTheme,
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
-        userDisplayName: this.context.pageContext.user.displayName
+        userDisplayName: this.context.pageContext.user.displayName,
+
+        context: this.context,
+        siteUrl: this.properties.siteUrl,
+        listName: this.properties.listName,
       }
     );
 
@@ -41,8 +48,6 @@ export default class ByodSearchWebPart extends BaseClientSideWebPart<IByodSearch
       this._environmentMessage = message;
     });
   }
-
-
 
   private _getEnvironmentMessage(): Promise<string> {
     if (this.context.sdks.microsoftTeams) { // running in Teams, office.com or Outlook
@@ -105,10 +110,16 @@ export default class ByodSearchWebPart extends BaseClientSideWebPart<IByodSearch
           },
           groups: [
             {
-              groupName: strings.BasicGroupName,
+              groupName: 'List Properties',
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyPaneTextField('siteUrl', {
+                  label: 'Site Path',
+                  value: this.properties.siteUrl,
+                  
+                }),
+                PropertyPaneTextField('listName', {
+                  label: 'List Name',
+                  value: this.properties.listName,
                 })
               ]
             }
