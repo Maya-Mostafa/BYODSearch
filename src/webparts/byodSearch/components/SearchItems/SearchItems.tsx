@@ -22,6 +22,7 @@ export default function SearchItems (props:SearchItemsProps) {
                             <div>
                                 <span className={styles.imgWrapper}><img width="100px" src={item.fields.Image? item.fields.Image.Url : require('../../assets/lib5.svg')} /></span>
                                 <span>{item.fields.Title}</span>
+                                <span className={styles.libraryTitle}>{item.libraryName}</span>
                             </div>
                             <Icon className={styles.searchArrow} iconName='ChevronRightMed' />
                         </a>

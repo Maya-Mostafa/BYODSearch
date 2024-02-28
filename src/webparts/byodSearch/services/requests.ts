@@ -91,7 +91,7 @@ const getListItemsGraph = async (context: WebPartContext, siteUrl: string, listN
 
     const graphClient = await context.msGraphClientFactory.getClient('3');
     const items = await graphClient.api(`sites/${siteId}/lists/${listGuid}/items?expand=fields(select=Title,link,Image,_ModernAudienceTargetUserField,Author,Id,login,pwd,LoginDisclaimer,NewTab,Category,ID,Created,Modified,Short_x0020_Description)`).get();
-    return items.value;
+    return items.value.map((item: any) => {return {...item, libraryName: listName}});
 };
 export const readAllListsGraph = async (context: WebPartContext, listUrl: string, listName: string, pageSize: number) =>{
     const listData: any = [];
