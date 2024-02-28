@@ -17,6 +17,7 @@ export interface IByodSearchWebPartProps {
 
   siteUrl: string;
   listName: string;
+  searchPlaceholder: string;
 }
 
 export default class ByodSearchWebPart extends BaseClientSideWebPart<IByodSearchWebPartProps> {
@@ -37,6 +38,7 @@ export default class ByodSearchWebPart extends BaseClientSideWebPart<IByodSearch
         context: this.context,
         siteUrl: this.properties.siteUrl,
         listName: this.properties.listName,
+        searchPlaceholder: this.properties.searchPlaceholder,
       }
     );
 
@@ -115,12 +117,15 @@ export default class ByodSearchWebPart extends BaseClientSideWebPart<IByodSearch
                 PropertyPaneTextField('siteUrl', {
                   label: 'Site Path',
                   value: this.properties.siteUrl,
-                  
                 }),
                 PropertyPaneTextField('listName', {
                   label: 'List Name',
                   value: this.properties.listName,
-                })
+                }),
+                PropertyPaneTextField('searchPlaceholder', {
+                  label: 'Search Placeholder',
+                  value: this.properties.searchPlaceholder,
+                }),
               ]
             }
           ]

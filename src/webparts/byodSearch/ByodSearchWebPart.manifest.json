@@ -22,7 +22,10 @@
     "description": { "default": "BYOD Search description" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "BYOD Search"
+      "description": "BYOD Search",
+      "siteUrl" : "https://pdsb1.sharepoint.com/sites/sLibrary",
+      "listName" : "BYODLists",
+      "searchPlaceholder" : "Search Library"
     }
   }]
 }
