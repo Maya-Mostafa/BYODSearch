@@ -10,4 +10,5 @@ export interface IByodSearchProps {
   context: WebPartContext;
   siteUrl: string;
   listName: string;
+  searchPlaceholder: string;
 }
